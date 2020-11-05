@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js">
+</script>
+
+</head>
+<style>
+.tab-pane {
+margin-top: 10px;
+height: 600px;
+}
+
+</style>
+<body>
+    <div style="margin: 0% 10%;text-align: center;background-color: rgb(3, 206, 47);"class="container">
+        <div class="jumbotron bg-success">
+            <div class="container">
+                <h1 class="text-light">Check here</h1>
+               
+            </div>
+        </div></div>
+<div class="container">
+<h1>Check where our Salons are Located.</h1>
+<div class="tabbable">
+<ul class="nav nav-tabs">
+<li class="active">
+<a href="#tab1" data-toggle="tab">Check Place here</a>
+</li>
+<li>
+
+<div class="tab-content">
+<div class="tab-pane active" id="tab1"><br><br>
+<div class="well">
+<form role="form">
+<div class="form-group">
+<input class="form-control" id="states_search" type="text" placeholder="Check here">
+</div>
+</form>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+</html>
+
+<script >
+$(document).ready(function() {
+
+var states = ['Angadi', 'Alapuram', 'Berthapuram', 'Bed', 'Balloon',
+'Chalakkappara', 'Cucumber', 'Back to Nature (Mondelēz International)', 'Cobblestone', 'Georgia', 'Wonder Bread',
+'Idaho', 'Illinois', 'Indiana', 'Kits', 'Mothers Pride', 'Wonder Bread', 'Sunbeam Bread',
+'Maine', 'Maryland', 'Nestlé Milo', 'Michigan', 'Minnesota',
+'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+'South Carolina', 'South Dakota', 'Trimmer', 'Silks', 'Utah', 'Vermont',
+'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
+
+var cities = ['Pontevedra', 'A Coruña', 'Lugo', 'Ourense'];
+
+$('#city').typeahead({
+source: cities
+});
+
+
+$('#states_search').typeahead({
+source: states
+});
+});
+</script>
