@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js">
+</script>
+
+</head>
+<style>
+.tab-pane {
+margin-top: 10px;
+height: 600px;
+}
+
+</style>
+<body>
+    
+<div style="text-align: center;"class="container">
+
+<h1 style="margin-top: 10%;">Check the existence of a Product here.</h1><br><br><br>
+<div style="padding: 10% 20% 0% 20%; background-color: rgb(253, 253, 253); border: 10px solid rgb(21, 21, 88);border-radius: 50px;"class="w">
+<ul class="nav nav-tabs">
+
+<li>
+<div >
+<div class="tab-content">
+<div class="tab-pane active" id="tab1"><br><br>
+
+<form role="form">
+<div class="form-group">
+<input style="margin-left:50px;width: 200%;"  class="form-control" id="states_search" type="text" placeholder="Check here">
+</div>
+</form>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br><br><br>
+<div style="margin: auto; "class="container ">
+    <img style="height:280px"class="g1" src="https://imgix.bustle.com/uploads/image/2018/5/22/864631f4-77d7-44a6-8093-2771da573f63-wafflemaker.jpeg" alt="">
+    <img style="height:280px"class="g1" src="https://viralserv.com/content/wp-content/uploads/-000//1/4H1q.jpg" alt="">
+    <img style="height:280px"class="g1" src="https://www.popsci.com/resizer/IGu2eYRrjHONyfh15ieT5gB-kjw=/760x476/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/JSOFIC76DZUHUNM7HZNRFG6H4Y.jpg" alt="">
+</div><br><br><br>
+<div style="background-color: rgb(9, 30, 88);padding-top: 10%;"></div>
+</body>
+
+</html>
+
+<script >
+$(document).ready(function() {
+
+var states = ['Air Fresher', 'Air Pump', 'Bananna', 'Bed', 'Balloon',
+'Cat', 'Cucumber', 'Back to Nature (Mondelēz International)', 'Cobblestone', 'Georgia', 'Wonder Bread',
+'Idaho', 'Illinois', 'Indiana', 'Kits', 'Mothers Pride', 'Wonder Bread', 'Sunbeam Bread',
+'Maine', 'Maryland', 'Nestlé Milo', 'Michigan', 'Minnesota',
+'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+'South Carolina', 'South Dakota', 'Trimmer', 'Silks', 'Utah', 'Vermont',
+'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
+
+var cities = ['Pontevedra', 'A Coruña', 'Lugo', 'Ourense'];
+
+$('#city').typeahead({
+source: cities
+});
+
+
+$('#states_search').typeahead({
+source: states
+});
+});
+</script>
