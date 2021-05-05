@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+
+
+
+  <title>Habit Tracker | Edify Cognity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+  
+<style>
+@import url(https://fonts.googleapis.com/css?family=Lato:300,100);
+body {
+  background: rgb(224, 224, 224);
+  font-family: "Lato", sans-serif;
+}
+
+#app {
+  margin-top: 50px;
+  color: #fff;
+}
+
+input[type=text], input[type=number] {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+  color: rgb(82, 82, 82);
+  font-family: "Lato", sans-serif;
+  font-size: 1.2em;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+input[type=number] {
+  width: 130px;
+  margin-bottom: 30px;
+}
+
+#creator, #progress {
+  border: 0;
+  border-radius: 0;
+  background: #00c2ae;
+  outline: none;
+  color: #fff;
+  transition: background 0.15s ease;
+}
+#creator:hover, #progress:hover {
+  background: #00d8a2;
+}
+
+#progress {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  border-radius: 50%;
+  margin: 13px 0 0 0;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.lower div {
+  float: left;
+  font-size: 1.4em;
+  margin: 18px 0 0 3px;
+}
+.lower span {
+  position: absolute;
+  top: 1px;
+  right: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(107, 55, 55);
+  transition: color 0.2s ease;
+}
+.lower span:hover {
+  color: rgb(165, 40, 40);
+}
+
+.habit {
+  margin-top: 20px;
+}
+
+.columns {
+  position: relative;
+  margin: 20px 20px 0 0;
+  background: rgb(187, 187, 187);
+  padding: 35px;
+  min-width: 300px;
+}
+.columns h4 {
+  margin-bottom: 12;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shell {
+  height: 20px;
+  width: 230px;
+  border-radius: 13px;
+  background: linear-gradient(to right, #58b599, #c150e3);
+  overflow: hidden;
+}
+
+.bar {
+  background: rgb(139, 139, 139);
+  height: 20px;
+  float: right;
+}
+
+.slide-transition {
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.slide-enter, .slide-leave {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+@media screen and (max-width: 550px) {
+  .columns {
+    text-align: center;
+  }
+  .columns .shell {
+    margin: 0 auto;
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div style="margin: 8% 30%;"class="container">
+  <div id="app">
+    <h1 style="font-weight: 800; color: #00c2ae; margin: auto; margin-bottom: 10%;">Habit Tracker</h1>
+    <div >
+      <input type="text" placeholder="Habit Title" v-model="newHabit" /><br />
+      <input type="number" placeholder="Repetitions" v-model="reps" /><br />
+      <button id="creator" @click="addHabit">Add</button>
+    </div>
+    <div style="margin: 0% 10% 0% -20%;" class="row habit">
+      <div v-for="habit in habits" class="four columns" transition="slide" :style="{ borderBottom: '5px solid ' + habit.random }">
+        <h4>{{ habit.title }}</h4>
+        <div class="shell">
+          <div class="bar" :style="{ width: 100 - habit.complete * (100 / habit.initial) + '%' }"></div>
+        </div>
+        <div class="lower">
+          <span @click="removeHabit(habit)">
+            <i class="fa fa-times"></i>
+          </span>
+          <button id="progress" 
+                  @click="completeReps(habit)" 
+                  v-show="!habit.finished" 
+                  :style="{ background: habit.random }"
+           >
+            <i class="fa fa-plus"></i>
+          </button>
+          <div v-show="!habit.finished">{{ habit.complete }}/{{ habit.initial }} times</div>
+          <div v-show="habit.finished" transition="slide">Complete!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js'></script>
+      <script id="rendered-js" >
+const colors = [
+"#00dbc5",
+"#00d471",
+"#007fd4",
+"#393E46",
+"#8600d4",
+"#d40094",
+"#d40063",
+"#78d400",
+"#B17179"];
+
+
+const vm = new Vue({
+  el: "#app",
+  data: {
+    habits: [
+    ],
+
+
+    newHabit: '',
+    reps: '',
+    initial: 0,
+    complete: 0,
+    colors: colors,
+    finished: false },
+
+  methods: {
+    addHabit() {
+      if (this.newHabit && this.reps) {
+        this.habits.push({
+          title: this.newHabit,
+          reps: this.reps,
+          initial: this.reps,
+          complete: 0,
+          random: this.colors[Math.floor(Math.random() * this.colors.length)],
+          finished: false });
+
+      }
+      this.newHabit = '';
+      this.reps = '';
+    },
+    removeHabit(habit) {
+      this.habits.$remove(habit);
+      console.log(this.habits);
+    },
+    completeReps(habit) {
+      if (habit.reps > 0) {
+        habit.reps -= 1;
+        habit.complete += 1;
+      }
+      if (habit.reps === 0) {
+        habit.finished = true;
+      }
+    } } });
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
